@@ -1,4 +1,4 @@
-package com.rtecsoft.alpha.schemaserverdemo.services.repositories;
+package com.rtecsoft.alpha.schemaserverdemo.services.schema;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -7,19 +7,14 @@ import org.springframework.boot.test.context.SpringBootTest;
 import static org.junit.jupiter.api.Assertions.*;
 
 @SpringBootTest
-class SchemaRepositoryTest {
+class SchemaServiceImplTest {
     @Autowired
-    private SchemaRepository schemaRepository;
+    private SchemaServiceImpl schemaService;
 
     @Test
-    void test() {
-        assertNotNull(schemaRepository);
-    }
-
-    @Test
-    void findAllByContentId() {
+    void getSchemaByContentId() {
         final String contentId = "https://example.com/product.schema.json";
-        var schemas = schemaRepository.findAllByContentId(contentId);
+        var schemas =  schemaService.getSchemaByContentId(contentId);
         assertFalse(schemas.isEmpty());
     }
 }

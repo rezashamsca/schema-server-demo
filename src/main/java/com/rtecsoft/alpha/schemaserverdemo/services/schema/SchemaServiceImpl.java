@@ -7,7 +7,9 @@ import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
 import java.util.Map;
+import java.util.Optional;
 import java.util.Set;
 
 @Slf4j
@@ -39,5 +41,13 @@ public class SchemaServiceImpl {
 
     private boolean isValidSchema(final Schema schema) {
         return schemaValidationService.isValidSchema(schema);
+    }
+
+    public Optional<Schema> getSchema(final String id) {
+        return repository.findById(id);
+    }
+
+    public List<Schema> getSchemaByContentId(final String contentId) {
+        return repository.findAllByContentId(contentId);
     }
 }
